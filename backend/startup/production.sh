@@ -1,4 +1,6 @@
-bash "$(pwd)/startup/base.sh"
+echo "Migrate database..."
+python manage.py migrate
+echo "Database migrated"
 
 echo "Checking deployment readiness..."
 python manage.py check --deploy
