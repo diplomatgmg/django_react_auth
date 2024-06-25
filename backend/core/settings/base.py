@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     # Libraries
     "rest_framework",
+    "djoser",
     "corsheaders",
     # Custom apps
     "apps.example_app",
@@ -52,7 +53,9 @@ ROOT_URLCONF = "core.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [],
+        "DIRS": [
+            BASE_DIR / "build",
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -73,7 +76,7 @@ WSGI_APPLICATION = "core.wsgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE": "django.db.backends.postgresql",
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
         "HOST": os.environ.get("POSTGRES_HOST"),
         "NAME": os.environ.get("POSTGRES_DB"),
         "USER": os.environ.get("POSTGRES_USER"),
@@ -81,6 +84,7 @@ DATABASES = {
         "PORT": os.environ.get("POSTGRES_PORT"),
     }
 }
+
 
 
 # Password validation
@@ -117,6 +121,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+# STATICFILES_DIRS = [BASE_DIR / "build" / "static"]
+
 STATIC_URL = "/django_static/"
 STATIC_ROOT = BASE_DIR / "django_static"
 
@@ -124,3 +130,5 @@ STATIC_ROOT = BASE_DIR / "django_static"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = "users.User"
