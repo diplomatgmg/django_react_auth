@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     "corsheaders",
     # Custom apps
     "apps.example_app",
+    "apps.users",
 ]
 
 MIDDLEWARE = [
